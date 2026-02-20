@@ -124,3 +124,170 @@ form button.submitBtn:hover{
    border:2px solid var(--secondary);
    color:var(--backPrimary);
 }
+/* 980px — subtle reduction */
+@media (max-width: 980px) {
+  .petImage {
+    height: 80vh;
+  }
+
+  .petBody {
+    padding: 18px 60px;
+    gap: 17px;
+    width: 76%;
+  }
+
+  .petBody h2 {
+    font-size: 38px;
+  }
+
+  .petBody p {
+    font-size: 18px;
+  }
+
+  .petBody form > h2 {
+    font-size: 23px;
+  }
+
+  .formText {
+    gap: 16px;
+    padding: 5px 0;
+  }
+
+  form label {
+    font-size: 16px;
+  }
+
+  form input,
+  form textarea {
+    padding: 5px;
+    font-size: 15px;
+  }
+
+  form button {
+    font-size: 20px;
+    width: 70%;
+  }
+
+  form button.submitBtn {
+    font-size: 20px;
+    width: 28%;
+  }
+}
+
+/* 780px — moderate reduction */
+@media (max-width: 780px) {
+  .petImage {
+    height: 70vh;
+  }
+
+  .petBody {
+    padding: 16px 40px;
+    gap: 14px;
+    width: 84%;
+  }
+
+  .petBody h2 {
+    font-size: 32px;
+    width: 88%;
+  }
+
+  .petBody p {
+    font-size: 16px;
+  }
+
+  .petBody form > h2 {
+    font-size: 20px;
+  }
+
+  .formText {
+    gap: 12px;
+    padding: 4px 0;
+  }
+
+  form label {
+    font-size: 14px;
+  }
+
+  form input,
+  form textarea {
+    padding: 4px;
+    font-size: 14px;
+  }
+
+  form textarea {
+    height: 100px;
+  }
+
+  form button {
+    font-size: 18px;
+    width: 90%;
+  }
+
+  form button.submitBtn {
+    font-size: 18px;
+    width: 60%;
+  }
+}
+
+/* 480px — compact, no wrapping, overflow fix */
+@media (max-width: 480px) {
+  .petImage {
+    height: 60vh;
+  }
+
+  .petBody {
+    padding: 12px 20px;
+    gap: 10px;
+    width: 96%;
+  }
+
+  .petBody h2 {
+    font-size: 24px;
+    width: 95%;
+  }
+
+  .petBody p {
+    font-size: 13px;
+  }
+
+  .petBody form > h2 {
+    font-size: 16px;
+  }
+
+  .formText {
+    gap: 8px;
+    padding: 3px 0;
+  }
+
+  form label {
+    font-size: 12px;
+    flex-basis: 38%;
+  }
+
+  form input,
+  form textarea {
+    flex-basis: 62%;
+    min-width: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 3px;
+    font-size: 12px;
+  }
+
+  form textarea {
+    height: 80px;
+    width: 100%;
+  }
+
+  form button {
+    font-size: 14px;
+    width: 76%;
+    padding: 3px 0.8em;
+  }
+
+  form button.submitBtn {
+    font-size: 14px;
+    width: 60%;
+    padding: 3px 0.8em;
+  }
+}

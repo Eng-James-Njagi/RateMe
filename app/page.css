@@ -77,6 +77,91 @@ small {
    padding: 4px 0;
 }
 
+/* 980px — subtle reduction */
+@media (max-width: 980px) {
+   .hero {
+      padding-top: 64px;
+      gap: 16px;
+   }
+
+   .hero h1 {
+      font-size: 34px;
+   }
+
+   .hero p {
+      font-size: 22px;
+      max-width: 92%;
+   }
+
+   .hero button {
+      font-size: 20px;
+   }
+
+   small {
+      font-size: 13px;
+   }
+}
+
+/* 780px — moderate reduction */
+@media (max-width: 780px) {
+   .hero {
+      padding-top: 52px;
+      gap: 14px;
+   }
+
+   .hero h1 {
+      font-size: 28px;
+   }
+
+   .hero p {
+      font-size: 18px;
+      max-width: 94%;
+   }
+
+   .hero button {
+      font-size: 17px;
+   }
+
+   small {
+      font-size: 12px;
+   }
+}
+
+/* 480px — compact mobile */
+@media (max-width: 480px) {
+   .hero {
+      padding-top: 94px;
+      gap: 12px;
+   }
+
+   .hero h1 {
+      font-size: 22px;
+   }
+
+   .hero p {
+      font-size: 14px;
+      max-width: 96%;
+      line-height: 1.8;
+   }
+
+   .p-with-lines {
+      gap: 6px;
+   }
+
+   .spn-message {
+      width: 28px;
+   }
+
+   .hero button {
+      font-size: 14px;
+      padding: 4px 1.2em;
+   }
+
+   small {
+      font-size: 11px;
+   }
+}
+
 .partners {
    background-color: var(--secondary);
    margin: 0;
@@ -130,6 +215,71 @@ article {
    border: 2px solid var(--accent);
 }
 
+/* 980px — subtle reduction */
+@media (max-width: 980px) {
+   .filters form {
+      padding: 14px 0.4em;
+      gap: 16px;
+   }
+
+   .filters form select {
+      padding: 6px 44px;
+      font-size: 15px;
+   }
+
+   .filters form input {
+      padding: 6px 44px;
+      font-size: 15px;
+      flex-basis: 60%;
+   }
+}
+
+/* 780px — moderate reduction, selects start to wrap together */
+@media (max-width: 780px) {
+   .filters form {
+      padding: 12px 0.4em;
+      gap: 12px;
+      width: 90%;
+   }
+
+   .filters form select {
+      padding: 6px 32px;
+      font-size: 14px;
+      flex: 1 1 40%;
+   }
+
+   .filters form input {
+      padding: 6px 32px;
+      font-size: 14px;
+      flex-basis: 80%;
+   }
+}
+
+/* 480px — full wrap, each element takes full width */
+@media (max-width: 480px) {
+   .filters form {
+      padding: 10px 0.4em;
+      gap: 10px;
+      width: 95%;
+      flex-direction: column;
+      align-items: stretch;
+   }
+
+   .filters form select {
+      padding: 6px 16px;
+      font-size: 13px;
+      flex: 1 1 100%;
+      width: 100%;
+   }
+
+   .filters form input {
+      padding: 6px 16px;
+      font-size: 13px;
+      flex-basis: 100%;
+      width: 100%;
+   }
+}
+
 .schoolCards {
    display: flex;
    justify-content: center;
@@ -138,9 +288,10 @@ article {
    padding: 40px 20px;
    min-height: 100vh;
 }
-.school a{
-   color:inherit;
-   text-decoration:none;
+
+.school a {
+   color: inherit;
+   text-decoration: none;
 }
 
 .school {
@@ -212,11 +363,12 @@ article {
    font-size: 16px;
    text-align: center;
    letter-spacing: 0.03em;
-   font-family:var(--inter)
+   font-family: var(--inter)
 }
-.school-name{
-   font-family:var(--geist-sans);
-   line-height:1.4;
+
+.school-name {
+   font-family: var(--geist-sans);
+   line-height: 1.4;
 }
 
 .rating-block {
@@ -225,10 +377,11 @@ article {
    align-items: center;
    gap: 6px;
    width: 100%;
-   
+
 }
-.rating-block span{
-   font-family:var(--geist-mono)
+
+.rating-block span {
+   font-family: var(--geist-mono)
 }
 
 .rating-label {
@@ -276,7 +429,7 @@ article {
    background: var(--primary);
    background-size: 200% 200%;
    border: none;
-   border:2px solid var(--secondary);
+   border: 2px solid var(--secondary);
    font-family: 'Lato', sans-serif;
    font-size: 18px;
    font-weight: 700;
@@ -285,7 +438,7 @@ article {
    display: flex;
    align-items: center;
    justify-content: center;
-   font-family:var(--geist-sans);
+   font-family: var(--geist-sans);
    gap: 8px;
    box-shadow: 0 4px 14px rgba(201, 168, 76, 0.4);
    transition: background-position 0.4s ease, box-shadow 0.25s ease, transform 0.15s ease;
@@ -307,4 +460,119 @@ article {
 
 .rate-btn:hover .arrow {
    transform: translateX(3px);
+}
+
+/* 980px — 3 columns */
+@media (max-width: 980px) {
+   .school {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+   }
+
+   .schoolCards {
+      padding: 32px 16px;
+      gap: 20px;
+   }
+
+   .school-card {
+      width: 220px;
+      padding: 24px 18px 18px;
+   }
+
+   .rating-value {
+      font-size: 32px;
+   }
+
+   .rate-btn {
+      font-size: 16px;
+   }
+}
+
+/* 780px — 2 columns, cards stretch to fill */
+@media (max-width: 780px) {
+   .school {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+   }
+
+   .schoolCards {
+      padding: 24px 14px;
+      gap: 16px;
+   }
+
+   .school-card {
+      width: 100%;
+      padding: 22px 16px 16px;
+   }
+
+   .school-logo-wrapper {
+      width: 78px;
+      height: 78px;
+   }
+
+   .school-name {
+      font-size: 15px;
+   }
+
+   .rating-value {
+      font-size: 30px;
+   }
+
+   .rate-btn {
+      font-size: 15px;
+      padding: 9px 0;
+   }
+}
+
+/* 480px — flex column, 1 card per row */
+@media (max-width: 480px) {
+   .school {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+   }
+
+   .schoolCards {
+      padding: 18px 10px;
+      gap: 14px;
+   }
+
+   .school-card {
+      width: 240px;
+      height: auto;
+      padding: 20px 14px 14px;
+      border-radius: 16px;
+   }
+
+   .school-logo-wrapper {
+      width: 70px;
+      height: 70px;
+   }
+
+   .school-name {
+      font-size: 14px;
+   }
+
+   .location {
+      font-size: 11px;
+   }
+
+   .rating-value {
+      font-size: 28px;
+   }
+
+   .rating-label {
+      font-size: 12px;
+   }
+
+   .rate-btn {
+      font-size: 14px;
+      padding: 8px 0;
+   }
+
+   .star {
+      font-size: 13px;
+   }
 }
