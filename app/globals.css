@@ -1,0 +1,18 @@
+:root{
+   --backPrimary:#F8FFF4;
+   --primary:#BC6C25;
+   --secondary:#DDA15E;
+   --accent:#283618;
+   --highlight:#606C38;
+   --highlight2:#FDF0D5
+}
+body,
+html{
+   background-color:var(--backPrimary); 
+   
+}
+*{
+   box-sizing:border-box;
+   margin:0;
+   padding:0;
+}
