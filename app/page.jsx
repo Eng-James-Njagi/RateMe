@@ -1,10 +1,13 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import { MapPin } from 'lucide-react';
 import './page.css'
-import { Schools } from './db/data/school.js'
+
 export default function Home() {
+  const [ Schools, setSchools ] = useState([])
+  const [ Loading, setLoading ] = useState(true)
   const counties = [
     { value: "", label: "Choose a county" },
     { value: "baringo", label: "Baringo" },
@@ -64,24 +67,28 @@ export default function Home() {
     { value: "polytechnic", label: "Polytechnic(Contains Nationals)" },
     { value: "vti", label: "Vocational Training Institute(VTIs)" }
   ]
-  const schools = Schools
-  function calculateAverage(ratingsArray) {
-    if (!ratingsArray || ratingsArray.length === 0) return 0
+  useEffect(() => {
+    async function fetchSchools() {
+      try {
+        const res = await fetch('/api/schoolData')
+        const data = await res.json()
 
-    const total = ratingsArray.reduce((sum, item) => {
-      return sum + Number(item.rating)
-    }, 0)
-
-    return Number((total / ratingsArray.length).toFixed(2))
-  }
-  const schoolsWithAverage = schools.map((school) => {
-    const average = calculateAverage(school.ratings.general)
-
-    return {
-      ...school,
-      averageRating: average,
+        if (!res.ok) {
+          console.error('API error:', data.error)
+          setSchools([])
+        } else {
+          setSchools(Array.isArray(data) ? data : [])
+        }
+      } catch (err) {
+        console.error('Fetch failed:', err)
+        setSchools([])
+      } finally {
+        setLoading(false)
+      }
     }
-  })
+    fetchSchools()
+  }, [])
+
 
   return (
     <>
@@ -144,45 +151,48 @@ export default function Home() {
 
       <div className="schoolCards">
         <div className="school">
-          {schoolsWithAverage.map((school) => (
-             <Link key={school.id} href={`./pages/schools/${school.id}`}>
-               <div className="school-card">
-              
-                <div className="school-logo-wrapper">
-                  <Image
-                    width={84}
-                    height={84}
-                    src={school.logo}
-                    alt="School Logo"
-                  />
-                </div>
-
-               
-                <h3 className="school-name">{school.name}</h3>
-
-                <div className="divider" />
-
-             
-                <div className="rating-block">
-                  <span className="rating-label">Rating</span>
-                  <span className="rating-value">{school.averageRating}</span>
-                </div>
-
-                <div className="divider" />
-
-           
-                <p className="location">
-                   <MapPin />
-                   {school.location}
-                </p>
-
-                
-                <button className="rate-btn">
-                  Rate Me <span className="arrow">→</span>
-                </button>
+          {Loading
+            ? Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="skeleton-card">
+                <div className="skeleton-logo" />
+                <div className="skeleton-name" />
+                <div className="skeleton-divider" />
+                <div className="skeleton-rating-label" />
+                <div className="skeleton-rating-value" />
+                <div className="skeleton-divider" />
+                <div className="skeleton-location" />
+                <div className="skeleton-btn" />
               </div>
-             </Link>
-          ))}
+            ))
+            : Schools.map((school) => (
+              <Link key={school.institute_id} href={`./pages/schools/${school.institute_id}`}>
+                <div className="school-card">
+                  <div className="school-logo-wrapper">
+                    <Image
+                      width={84}
+                      height={84}
+                      src={school.institute_logo}
+                      alt="School Logo"
+                    />
+                  </div>
+                  <h3 className="school-name">{school.institute_name}</h3>
+                  <div className="divider" />
+                  <div className="rating-block">
+                    <span className="rating-label">Rating</span>
+                    <span className="rating-value">{school.averageRating}</span>
+                  </div>
+                  <div className="divider" />
+                  <p className="location">
+                    <MapPin />
+                    {school.institute_location_name}
+                  </p>
+                  <button className="rate-btn">
+                    Rate Me <span className="arrow">→</span>
+                  </button>
+                </div>
+              </Link>
+            ))
+          }
         </div>
       </div>
     </>
