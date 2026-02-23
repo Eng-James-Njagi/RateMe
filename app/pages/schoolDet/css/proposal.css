@@ -71,10 +71,12 @@
 form label{
    font-family:var(--geist-sans);
    font-size:18px;
+   display:flex;
+  flex-direction:column;
 }
 form input{
    flex-basis: 60%; 
-   padding: 6px;
+   padding: 8px;
    font-size: 16px;
    font-family: var(--inter);
    border-radius: 2px;

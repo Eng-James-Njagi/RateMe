@@ -1,4 +1,5 @@
 import "./globals.css";
+import {Toaster} from 'sonner'
 import { Geist, Geist_Mono , Inter} from "next/font/google";
 import Navigation from './components/nav'
 import Footer from './components/footer'
@@ -26,6 +27,9 @@ export default function RootLayout({ children }) {
         <title>Rate Me</title>
       </head>
       <body>
+        <Toaster 
+        position="top-left"
+        />
          <Navigation/>
         <main>
           {children}
