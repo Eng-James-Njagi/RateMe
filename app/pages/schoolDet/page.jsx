@@ -21,6 +21,28 @@ export default function SchoolPledge() {
   const HandleSubmit = async (e) => {
     e.preventDefault()
 
+    if (!form.institute_name.trim()) {
+      toast.error('School name is required')
+      return
+    }
+
+    const fields = {
+      institute_name: form.institute_name,
+      institute_motto: form.institute_motto,
+      institute_location_name: form.institute_location_name,
+      institute_location_link: form.institute_location_link,
+      institute_history: form.institute_history,
+      institute_status: form.institute_status,
+      institute_category: form.institute_category,
+    }
+
+    const filledFields = Object.values(fields).filter(v => v.trim() !== '').length
+
+    if (filledFields < 2) {
+      toast.error('Please fill in at least 2 fields before submitting')
+      return
+    }
+
     const res = await fetch('/api/schoolData', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -60,7 +82,7 @@ export default function SchoolPledge() {
       <div className="petBody">
         <h2>Help Us Complete the List. Add a School.</h2>
         <p>
-          Submit a school that is not  listed yet and help build a
+          Submit a school that is not listed yet and help build a
           more complete, fair academic overview.
         </p>
         <form onSubmit={HandleSubmit}>
@@ -128,9 +150,8 @@ export default function SchoolPledge() {
           <h2>School Faculties</h2>
           <button type="button">+ Add a faculty or a School</button>
 
-          <h2>Contact Message</h2>
           <div className="formText">
-            <label>Title: </label>
+            <label>Category: </label>
             <input
               type="text"
               name="institute_category"
